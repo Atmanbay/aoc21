@@ -5,6 +5,8 @@ module.exports = function () {
     line.split("").map((item) => Number(item))
   );
 
+  // Add up all bits column-by-column
+  // If the result is greater than half of the length of the array then 1 is more common, otherwise 0 is more common
   let result = array
     .reduce((previous, current) =>
       previous.map((item, index) => item + current[index])
