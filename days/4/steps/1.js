@@ -1,4 +1,4 @@
-const readFile = require("../../../utils/readFile");
+const readInput = require("../../../utils/readInput");
 
 const calledNumberMarker = "X";
 const length = 5;
@@ -18,7 +18,7 @@ const indexOf2d = (array2d, value) => {
 };
 
 module.exports = function () {
-  let array = readFile(__dirname, "input.txt", "\n");
+  let array = readInput();
 
   let calledNumbers = array
     .shift()

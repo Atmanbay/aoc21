@@ -1,4 +1,4 @@
-const readFile = require("../../../utils/readFile");
+const readInput = require("../../../utils/readInput");
 
 const calledNumberMarker = "X";
 const length = 5;
