@@ -1,5 +1,3 @@
-const readInput = require("../../../utils/readInput");
-
 const regex = /(\d+),(\d+) -> (\d+),(\d+)/;
 const stringToLine = (str) => {
   let matches = str.match(regex);
@@ -15,13 +13,15 @@ const stringToLine = (str) => {
   };
 };
 
-module.exports = function () {
-  let input = readInput();
-
+module.exports = function (input) {
   let counter = 0;
   let map = {};
   input.forEach((lineStr) => {
     let line = stringToLine(lineStr);
+
+    if (line.a.x != line.b.x && line.a.y != line.b.y) {
+      return;
+    }
 
     let pointCount = Math.abs(line.a.x - line.b.x) + 1;
     if (pointCount == 1) {

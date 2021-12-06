@@ -1,9 +1,5 @@
-const readFile = require("../../../utils/readFile");
-
-module.exports = function () {
-  let array = readFile(__dirname, "input.txt", "\n").map((line) =>
-    line.split("").map((item) => Number(item))
-  );
+module.exports = function (input) {
+  let array = input.map((line) => line.split("").map((item) => Number(item)));
 
   let bitLength = array[0].length;
 

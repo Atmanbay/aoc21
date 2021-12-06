@@ -1,8 +1,4 @@
-const readFile = require("../../../utils/readFile");
-
-module.exports = function () {
-  let array = readFile(__dirname, "1.txt", "\n");
-
+module.exports = function (input) {
   let position = {
     horizontal: 0,
     depth: 0,
@@ -14,8 +10,8 @@ module.exports = function () {
     down: (value) => (position.depth = position.depth + value),
   };
 
-  for (let i = 0; i < array.length; i++) {
-    let command = array[i];
+  for (let i = 0; i < input.length; i++) {
+    let command = input[i];
     let args = command.split(" ");
 
     let func = funcMapping[args[0]];

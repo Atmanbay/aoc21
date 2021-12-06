@@ -1,5 +1,3 @@
-const readInput = require("../../../utils/readInput");
-
 const calledNumberMarker = "X";
 const length = 5;
 const indexOf2d = (array2d, value) => {
@@ -17,20 +15,18 @@ const indexOf2d = (array2d, value) => {
   return null;
 };
 
-module.exports = function () {
-  let array = readInput();
-
-  let calledNumbers = array
+module.exports = function (input) {
+  let calledNumbers = input
     .shift()
     .split(",")
     .map((calledNumber) => Number(calledNumber));
   let boards = [];
 
-  array.shift(); // remove blank line
+  input.shift(); // remove blank line
 
   let rowCount = 0;
   let board = [];
-  array.forEach((line) => {
+  input.forEach((line) => {
     if (line == "") {
       boards.push([...board]);
       rowCount = 0;
@@ -45,6 +41,9 @@ module.exports = function () {
     rowCount++;
   });
 
+  let boardCount = boards.length;
+
+  let winningBoardCount = 1;
   for (let i = 0; i < calledNumbers.length; i++) {
     let calledNumber = calledNumbers[i];
     for (let j = 0; j < boards.length; j++) {
@@ -77,15 +76,19 @@ module.exports = function () {
         }
 
         if (winner) {
-          let uncalledNumbers = [];
-          for (let row = 0; row < length; row++) {
-            uncalledNumbers.push(
-              ...board[row].filter((value) => value != calledNumberMarker)
-            );
-          }
+          if (winningBoardCount == boardCount) {
+            let uncalledNumbers = [];
+            for (let row = 0; row < length; row++) {
+              uncalledNumbers.push(
+                ...board[row].filter((value) => value != calledNumberMarker)
+              );
+            }
 
-          let uncalledNumberSum = uncalledNumbers.reduce((a, b) => a + b, 0);
-          return uncalledNumberSum * calledNumber;
+            let uncalledNumberSum = uncalledNumbers.reduce((a, b) => a + b, 0);
+            return uncalledNumberSum * calledNumber;
+          }
+          boards.splice(j, 1);
+          winningBoardCount++;
         }
       }
     }

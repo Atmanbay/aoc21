@@ -1,7 +1,5 @@
-const readFile = require("../../../utils/readFile");
-
-module.exports = function () {
-  let array = readFile(__dirname, "1.txt", "\n").map((item) => Number(item));
+module.exports = function (input) {
+  let array = input.map((item) => Number(item));
   let windowedArray = [];
 
   for (let i = 0; i < array.length - 2; i++) {

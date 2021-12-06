@@ -1,9 +1,5 @@
-const readFile = require("../../../utils/readFile");
-
-module.exports = function () {
-  let array = readFile(__dirname, "input.txt", "\n").map((line) =>
-    line.split("").map((item) => Number(item))
-  );
+module.exports = function (input) {
+  let array = input.map((line) => line.split("").map((item) => Number(item)));
 
   // Add up all bits column-by-column
   // If the result is greater than half of the length of the array then 1 is more common, otherwise 0 is more common

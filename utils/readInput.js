@@ -5,6 +5,5 @@ module.exports = function () {
   let data = fs.readFileSync(0, "utf-8").toString().split("\n");
   console.log("");
   console.log("");
-  console.log("ANSWER:");
   return data;
 };

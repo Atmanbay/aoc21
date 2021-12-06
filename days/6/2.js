@@ -1,7 +1,4 @@
-const readInput = require("../../../utils/readInput");
-
-module.exports = function () {
-  let input = readInput();
+module.exports = function (input) {
   let array = input[0].split(",");
 
   let days = 256;

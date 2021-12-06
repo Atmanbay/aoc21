@@ -1,4 +1,5 @@
 const readDay = require("./utils/readDay");
+const readInput = require("./utils/readInput");
 
 let dayArg = process.argv[2];
 let day = null;
@@ -16,9 +17,12 @@ if (!day) {
   return;
 }
 
+let input = readInput();
 let steps = readDay(day);
 if (stepNumber !== null) {
-  console.log(steps[stepNumber]());
+  console.log(`STEP ${stepNumber + 1}`, steps[stepNumber](input));
 } else {
-  steps.forEach((step) => console.log(step()));
+  steps.forEach((step, stepNumber) =>
+    console.log(`STEP ${stepNumber + 1}`, step(input))
+  );
 }
