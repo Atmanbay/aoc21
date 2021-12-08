@@ -44,48 +44,26 @@ module.exports = function (input) {
       }
     });
 
-    // deduce the rest using the known numbers as a reference
     line.inputs.forEach((binary) => {
       let length = binary.split("1").length - 1;
       let binaryAsDecimal = parseInt(binary, 2);
-      switch (length) {
-        case 5:
-          // if 100% overlap with #7 then #3
-          if ((binaryAsDecimal & numberToBinary[7]) == numberToBinary[7]) {
-            numberToBinary[3] = binaryAsDecimal;
-            break;
-          }
+      let similarToOne =
+        (binaryAsDecimal & numberToBinary[1]).toString(2).split("1").length - 1;
+      let similarToFour =
+        (binaryAsDecimal & numberToBinary[4]).toString(2).split("1").length - 1;
 
-          // if 3 segs are similar with #4 then #5
-          if (
-            (binaryAsDecimal & numberToBinary[4]).toString(2).split("1")
-              .length -
-              1 ==
-            3
-          ) {
-            numberToBinary[5] = binaryAsDecimal;
-            break;
-          }
-
-          // else #2
-          numberToBinary[2] = binaryAsDecimal;
-          break;
-        case 6:
-          // if 100% overlap with #4 then #9
-          if ((binaryAsDecimal & numberToBinary[4]) == numberToBinary[4]) {
-            numberToBinary[9] = binaryAsDecimal;
-            break;
-          }
-
-          // if 100% overlap with #7 then #0
-          if ((binaryAsDecimal & numberToBinary[7]) == numberToBinary[7]) {
-            numberToBinary[0] = binaryAsDecimal;
-            break;
-          }
-
-          // else #6
-          numberToBinary[6] = binaryAsDecimal;
-          break;
+      if (length == 6 && similarToOne == 2 && similarToFour == 3) {
+        numberToBinary[0] = binaryAsDecimal;
+      } else if (length == 5 && similarToOne == 1 && similarToFour == 2) {
+        numberToBinary[2] = binaryAsDecimal;
+      } else if (length == 5 && similarToOne == 2 && similarToFour == 3) {
+        numberToBinary[3] = binaryAsDecimal;
+      } else if (length == 5 && similarToOne == 1 && similarToFour == 3) {
+        numberToBinary[5] = binaryAsDecimal;
+      } else if (length == 6 && similarToOne == 1 && similarToFour == 3) {
+        numberToBinary[6] = binaryAsDecimal;
+      } else if (length == 6 && similarToOne == 2 && similarToFour == 4) {
+        numberToBinary[9] = binaryAsDecimal;
       }
     });
 
