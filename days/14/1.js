@@ -44,7 +44,6 @@ module.exports = function (input) {
     });
 
     polymerPairCounts = tempPolymerPairCounts;
-    console.log({ step, polymerPairCounts, characterCounts });
   }
 
   let characters = Object.keys(characterCounts);

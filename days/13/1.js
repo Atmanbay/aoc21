@@ -31,5 +31,4 @@ module.exports = function (input) {
   });
 
   return tempCoordinates.length;
-  // coordinates = tempCoordinates;
 };
