@@ -1,5 +1,5 @@
 module.exports = function (input) {
-  let maxSteps = 10;
+  let maxSteps = 40;
   let template = input.shift();
   let mappings = input.slice(1).reduce((a, b) => {
     let split = b.split(" -> ");
